@@ -62,7 +62,7 @@
       @descendent progress {
         position: absolute;
         display: block;
-        background-color: #26a2ff;
+        background-color: #ffc900;
         top: 50%;
         transform: translateY(-50%);
         width: 0;

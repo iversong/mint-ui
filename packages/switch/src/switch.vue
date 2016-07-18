@@ -71,8 +71,8 @@ export default {
         }
 
         &:checked {
-          border-color: $color-blue;
-          background-color: $color-blue;
+          border-color: $color-yello;
+          background-color: $color-yello;
 
           &::before {
             transform: scale(0);

@@ -13,7 +13,7 @@
       <span style="color: green">这里是元素</span>
     </mt-cell>
     <mt-cell title="标题文字">
-      <mt-button size="small" type="primary" icon="back">按钮</mt-button>
+      <mt-button size="small" type="default" icon="back">按钮</mt-button>
     </mt-cell>
 
     <mt-cell title="标题" label="描述信息" is-link></mt-cell>

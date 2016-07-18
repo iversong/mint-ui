@@ -106,8 +106,8 @@ export default {
         }
 
         &:checked {
-          background-color: $color-blue;
-          border-color: $color-blue;
+          background-color: $color-yello;
+          border-color: $color-yello;
 
           &::after {
             background-color: $color-white;

@@ -115,7 +115,7 @@
   import draggable from './draggable';
   import translateUtil from './translate';
   import { addClass, removeClass, once } from 'wind-dom';
-  require('raf.js');
+  // require('raf.js');
 
   var rotateElement = function(element, angle) {
     if (!element) return;

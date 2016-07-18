@@ -17,7 +17,7 @@
       <p>更新成功</p>
     </mt-popup>
     <mt-popup :visible.sync="popupVisible3" position="right" class="mint-popup-3" :modal="false">
-      <mt-button @click="popupVisible3 = false" size="large" type="primary">关闭 popup</mt-button>
+      <mt-button @click="popupVisible3 = false" size="large" type="default">关闭 popup</mt-button>
     </mt-popup>
     <mt-popup :visible.sync="popupVisible4" position="bottom" class="mint-popup-4">
       <mt-picker :slots="dateSlots" @change="onDateChange" :visible-item-count="5" :show-toolbar="false"></mt-picker>
@@ -46,7 +46,7 @@
 
         h1 {
           font-size: 20px;
-          color: #26a2ff;
+          color: #ffc900;
         }
 
         p {
