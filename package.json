@@ -16,16 +16,16 @@
   "scripts": {
     "dev": "cooking watch -c cooking.demo.js",
     "dist": "cooking build -p && mv lib/index/* lib/ && rm -rf lib/index",
-    "deploy": "cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
+    "deploy": "cooking build -c cooking.demo.js -p && gh-pages -d example/dist",
     "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElemeFE/mint-ui.git"
+    "url": "git+https://github.com/iversong/mint-ui.git"
   },
-  "homepage": "https://github.com/ElemeFE/mint-ui#readme",
+  "homepage": "https://github.com/iversong/mint-ui#readme",
   "bugs": {
-    "url": "https://github.com/ElemeFE/mint-ui/issues"
+    "url": "https://github.com/iversong/mint-ui/issues"
   },
   "author": "elemefe",
   "license": "MIT",
