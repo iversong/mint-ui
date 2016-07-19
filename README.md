@@ -1,4 +1,4 @@
-# mint-ui
+# mint-ui 得图配色
 > Mobile UI elements for vue.js
 
 - [Homepage](http://mint-ui.github.io)
