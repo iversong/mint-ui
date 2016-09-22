@@ -1,4 +1,4 @@
-# mint-ui µÃÍ¼ÅäÉ«
+# mint-ui å¾—å›¾é…è‰²
 
 [![npm](https://img.shields.io/npm/v/mint-ui.svg?maxAge=3600)](https://www.npmjs.com/package/mint-ui)
 ![JS gzip size](http://img.badgesize.io/elemefe/mint-ui/master/lib/index.js.svg?compression=gzip&label=gzip%20size:%20JS)
