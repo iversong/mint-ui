@@ -1,6 +1,7 @@
 var cooking = require('cooking');
 var Components = require('./components.json');
 var path = require('path');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 var entrys = {};
 Object.keys(Components).forEach(function (key) {
@@ -19,7 +20,7 @@ cooking.set({
 
 cooking.add('resolve.alias', {
   'main': path.join(__dirname, '../../src'),
-  'packages': path.join(__dirname, '../../packages')
+  'mint-ui': path.join(__dirname, '..')
 });
 
 cooking.add('output.filename', '[name]/index.js')
@@ -32,5 +33,9 @@ cooking.add('externals', {
     amd: 'vue'
   }
 });
+
+cooking.add('plugin.WebpackShell', new WebpackShellPlugin({
+  onBuildExit: [`mv ${__dirname}/lib/index/* ${__dirname}/lib/ && rm -rf ${__dirname}/lib/index`]
+}));
 
 module.exports = cooking.resolve();

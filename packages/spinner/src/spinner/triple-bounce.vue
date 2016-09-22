@@ -1,8 +1,8 @@
 <template>
-  <div class="kebab-spinner-triple-bounce">
-    <div class="kebab-spinner-triple-bounce-bounce1" :style="bounceStyle"></div>
-    <div class="kebab-spinner-triple-bounce-bounce2" :style="bounceStyle"></div>
-    <div class="kebab-spinner-triple-bounce-bounce3" :style="bounceStyle"></div>
+  <div class="mint-spinner-triple-bounce">
+    <div class="mint-spinner-triple-bounce-bounce1" :style="bounceStyle"></div>
+    <div class="mint-spinner-triple-bounce-bounce2" :style="bounceStyle"></div>
+    <div class="mint-spinner-triple-bounce-bounce3" :style="bounceStyle"></div>
   </div>
 </template>
 
@@ -31,25 +31,25 @@
 </script>
 
 <style lang="css">
-@component-namespace kebab-spinner {
+@component-namespace mint-spinner {
   @component triple-bounce {
     @descendent bounce1, bounce2, bounce3 {
       border-radius: 100%;
       display: inline-block;
-      animation: kebab-spinner-triple-bounce 1.4s infinite ease-in-out both;
+      animation: mint-spinner-triple-bounce 1.4s infinite ease-in-out both;
     }
 
     @descendent bounce1 {
       animation-delay: -0.32s;
     }
 
-    @descendent bounce1 {
+    @descendent bounce2 {
       animation-delay: -0.16s;
     }
   }
 }
 
-@keyframes kebab-spinner-triple-bounce {
+@keyframes mint-spinner-triple-bounce {
   0%, 80%, 100% {
     transform: scale(0);
   } 40% {
