@@ -22,8 +22,10 @@
 </template>
 
 <script>
-import XCell from 'packages/cell/index.js';
-
+import XCell from 'mint-ui/packages/cell/index.js';
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/cell/style.css');
+}
 /**
  * mt-radio
  * @module components/radio
@@ -103,6 +105,8 @@ export default {
           border-radius: 100%;
           position: absolute 5px * * 5px;
           size: 8px;
+          transition: transform .2s;
+          transform: scale(0);
         }
 
         &:checked {
@@ -111,6 +115,7 @@ export default {
 
           &::after {
             background-color: $color-white;
+            transform: scale(1);
           }
         }
 

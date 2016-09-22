@@ -1,42 +1,54 @@
 <template>
-  <x-cell
-    class="mint-field"
-    :title="label"
-    v-clickoutside="active = false"
-    :class="[{ 'is-nolabel': !label }, {
-      'is-textarea': type === 'textarea'
-    }]">
-    <textarea
-      class="mint-field-core"
-      :placeholder="placeholder"
-      v-if="type === 'textarea'"
-      :rows="rows"
-      v-model="value">
-    </textarea>
-    <input
-      class="mint-field-core"
-      :placeholder="placeholder"
-      :number="type === 'number'"
-      v-else
-      :type="type"
-      @focus="active = true"
-      v-model="value">
-    <div
-      @click="value = ''"
-      class="mint-field-clear"
-      v-show="value && type !== 'textarea' && active">
-      <i class="mintui mintui-field-error"></i>
-    </div>
-    <span class="mint-field-state" v-if="state" :class="['is-' + state]">
-      <i class="mintui" :class="['mintui-field-' + state]"></i>
-    </span>
-  </x-cell>
+  <div class="mint-field" :class="{ 'is-nolabel': !label }">
+    <x-cell
+      class="mint-field-cell"
+      :title="label"
+      v-clickoutside="active = false"
+      :class="[{
+        'is-textarea': type === 'textarea'
+      }]">
+      <textarea
+        v-el:textarea
+        class="mint-field-core"
+        :placeholder="placeholder"
+        v-if="type === 'textarea'"
+        :rows="rows"
+        :disabled="disabled"
+        :readonly="readonly"
+        v-model="value">
+      </textarea>
+      <input
+        v-el:input
+        class="mint-field-core"
+        :placeholder="placeholder"
+        :number="type === 'number'"
+        v-else
+        :type="type"
+        @focus="active = true"
+        :disabled="disabled"
+        :readonly="readonly"
+        v-model="value">
+      <div
+        @click="value = ''"
+        class="mint-field-clear"
+        v-show="value && type !== 'textarea' && active">
+        <i class="mintui mintui-field-error"></i>
+      </div>
+      <span class="mint-field-state" v-if="state" :class="['is-' + state]">
+        <i class="mintui" :class="['mintui-field-' + state]"></i>
+      </span>
+    </x-cell>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-import 'main/assets/font/iconfont.css';
-import XCell from 'packages/cell/index.js';
+import XCell from 'mint-ui/packages/cell/index.js';
 import Clickoutside from 'vue-clickoutside';
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/font/style.css');
+  require('mint-ui/packages/cell/style.css');
+}
 
 /**
  * mt-field
@@ -47,6 +59,8 @@ import Clickoutside from 'vue-clickoutside';
  * @param {string} [label] - 标签
  * @param {string} [rows] - textarea 的 rows
  * @param {string} [placeholder] - placeholder
+ * @param {string} [disabled] - disabled
+ * @param {string} [readonly] - readonly
  * @param {string} [state] - 表单校验状态样式，接受 error, warning, success
  *
  * @example
@@ -76,15 +90,33 @@ export default {
     rows: String,
     label: String,
     placeholder: String,
+    readonly: Boolean,
+    disabled: Boolean,
     state: {
       type: String,
       default: 'default'
     },
-    value: ''
+    value: {},
+    attr: Object
   },
 
   components: {
     XCell
+  },
+
+  watch: {
+    attr: {
+      immediate: true,
+      handler(attrs) {
+        this.$nextTick(() => {
+          const target = [this.$els.input, this.$els.textarea];
+          target.forEach(el => {
+            if (!el || !attrs) return;
+            Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]));
+          });
+        });
+      }
+    }
   }
 };
 </script>
@@ -94,6 +126,8 @@ export default {
 
   @component-namespace mint {
     @component field {
+      display: flex;
+
       @when textarea {
         align-items: inherit;
 
@@ -102,8 +136,9 @@ export default {
         }
       }
 
-      &.mint-cell {
+      .mint-cell {
         padding: 9px 10px;
+        flex: 1;
       }
 
       .mint-cell-title {
@@ -125,6 +160,7 @@ export default {
         outline: 0;
         line-height: 1.6;
         font-size: inherit;
+        width: 100%;
       }
 
       @descendent clear {
@@ -149,6 +185,10 @@ export default {
 
         @when success {
           color: $success-color;
+        }
+
+        @when default {
+          margin-left: 0;
         }
       }
 

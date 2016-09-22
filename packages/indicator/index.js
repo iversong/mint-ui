@@ -1,7 +1,9 @@
 import Vue from 'vue';
+import './src/style.css';
 
 const Indicator = Vue.extend(require('./src/indicator.vue'));
 let instance;
+let timer;
 
 module.exports = {
   open(options) {
@@ -22,6 +24,9 @@ module.exports = {
       instance.spinnerType = 'snake';
     }
     instance.$appendTo(document.body);
+    if (timer) {
+      clearTimeout(timer);
+    }
 
     Vue.nextTick(() => {
       instance.visible = true;
@@ -32,6 +37,11 @@ module.exports = {
     if (instance) {
       Vue.nextTick(() => {
         instance.visible = false;
+        timer = setTimeout(() => {
+          if (instance.$el) {
+            instance.$el.style.display = 'none';
+          }
+        }, 400);
       });
     }
   }

@@ -22,7 +22,10 @@
 </template>
 
 <script>
-import XCell from 'packages/cell/index.js';
+import XCell from 'mint-ui/packages/cell/index.js';
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/cell/style.css');
+}
 
 /**
  * mt-checklist
@@ -130,7 +133,7 @@ export default {
           position: absolute 3px * * 6px;
           size: 4px 8px;
           transform: rotate(45deg);
-
+          transition: transform .2s;
         }
 
         &:checked {
@@ -139,6 +142,7 @@ export default {
 
           &::after {
             border-color: $color-white;
+            transform: rotate(45deg) scale(1);
           }
         }
 

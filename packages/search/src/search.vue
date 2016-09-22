@@ -36,7 +36,10 @@
 </template>
 
 <script>
-import XCell from 'packages/cell/index.js';
+import XCell from 'mint-ui/packages/cell/index.js';
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/cell/style.css');
+}
 
 /**
  * mt-search
@@ -101,8 +104,10 @@ export default {
       z-index: 1;
 
       @descendent inner {
+        align-items: center;
         background-color: $color-white;
         border-radius: 2px;
+        display: flex;
         flex: 1;
         height: 28px;
         padding: 4px 6px;
@@ -122,11 +127,12 @@ export default {
       }
 
       @descendent placeholder {
+        align-items: center;
         color: #9b9b9b;
+        display: flex;
         font-size: 12px;
-        padding: 14px;
+        justify-content: center;
         position: absolute 0 0 0 0;
-        text-align: center;
 
         .mintui-search {
           font-size: 12px;

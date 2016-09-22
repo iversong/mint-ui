@@ -2,7 +2,9 @@
 .cache
 .DS_Store
 .idea
-build
-dist
-lib
+packages/**/lib
+lib/*
+!lib/index.js
+!lib/style.css
 node_modules
+example/dist
