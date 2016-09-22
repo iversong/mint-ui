@@ -3,6 +3,7 @@ import App from './app';
 import routes from './route';
 import Mint from 'src/index';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 
 document.addEventListener('DOMContentLoaded', function() {
   if (window.FastClick) window.FastClick.attach(document.body);
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Vue.use(Mint);
 Vue.use(VueRouter);
+Vue.use(VueResource);
 
 const router = new VueRouter();
 
